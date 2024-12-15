@@ -49,7 +49,7 @@ pip install -r requirements.txt
 4. Create a .env file in the project root:
 
 - GOOGLE_APPLICATION_CREDENTIALS=/path/to/your/google-credentials.json
-- GROQ_API_URL=https://api.groq.com/v1/chat/completions
+- GROQ_API_URL=https://api.groq.com/openai/v1/chat/completions
 - GROQ_API_KEY=your-llm-api-key
 
 5. Run the server
