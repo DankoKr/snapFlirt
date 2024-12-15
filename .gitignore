@@ -1,3 +1,4 @@
 .env
 venv
 service-acc.json
+__pycache__
