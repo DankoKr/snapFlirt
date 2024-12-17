@@ -51,6 +51,7 @@ pip install -r requirements.txt
 - GOOGLE_APPLICATION_CREDENTIALS=/path/to/your/google-credentials.json
 - GROQ_API_URL=https://api.groq.com/openai/v1/chat/completions
 - GROQ_API_KEY=your-llm-api-key
+- FRONTEND_URL=http://your-frontend/
 
 5. Run the server
 
