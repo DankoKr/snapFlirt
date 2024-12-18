@@ -1,10 +1,28 @@
+import os
 import io
+import json
 from google.cloud import vision
+from google.oauth2.service_account import Credentials
 from app.utils.logger import logger
 from app.services.emotion_analysis import analyze_emotions
+from app.utils.config import SERVICE_ACCOUNT_JSON
 
 def create_vision_client():
-    return vision.ImageAnnotatorClient()
+    """
+    Create a Vision API client using credentials from SERVICE_ACCOUNT_JSON.
+    """
+
+    if not SERVICE_ACCOUNT_JSON:
+        raise EnvironmentError("SERVICE_ACCOUNT_JSON environment variable is not set.")
+
+    try:
+        service_account_info = json.loads(SERVICE_ACCOUNT_JSON)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Invalid JSON in SERVICE_ACCOUNT_JSON: {e}")
+
+    credentials = Credentials.from_service_account_info(service_account_info)
+
+    return vision.ImageAnnotatorClient(credentials=credentials)
 
 def analyze_image(image_path: str):
     """
