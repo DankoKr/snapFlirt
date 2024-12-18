@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routes import router
 from app.utils.logger import setup_logging
 from app.utils.config import FRONTEND_URL
-from mangum import Mangum
 
 setup_logging()
 
@@ -22,6 +21,3 @@ app.include_router(router)
 @app.get("/")
 async def root():
     return {"message": "Welcome to the SnapFlirt API!"}
-
-# For Vercel compatibility
-handler = Mangum(app)
